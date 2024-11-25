@@ -63,3 +63,4 @@ C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\refint\AppTare
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.pdb
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.genruntimeconfig.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\ref\AppTareas.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.sourcelink.json

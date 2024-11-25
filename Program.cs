@@ -1,8 +1,9 @@
 using AppTareas.Models;
+using AppTareas.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<LoginServicio>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
