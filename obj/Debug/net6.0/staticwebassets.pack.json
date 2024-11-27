@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\AppTareas.bundle.scp.css"
     },
     {
+      "Id": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\wwwroot\\assets\\images\\images.png",
+      "PackagePath": "staticwebassets\\assets\\images\\images.png"
+    },
+    {
       "Id": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

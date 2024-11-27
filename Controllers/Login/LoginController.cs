@@ -1,7 +1,10 @@
 ﻿using AppTareas.Models;
 using AppTareas.Service;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Security.Claims;
 
 namespace AppTareas.Controllers.Login
 {
@@ -25,11 +28,15 @@ namespace AppTareas.Controllers.Login
 
             if (usuario != null)
             {
-                // Verificar la contraseña utilizando la función del servicio
                 if (_encryp.VerifyPassword(usuario.Contrasena, password))
                 {
-                    TempData["success"] = $"Bienvenido usuario {usuario.Nombre} {usuario.Apellido}";
-                    return RedirectToAction("Index", "dashboard");
+                    // Pasar datos del usuario a TempData
+                    TempData["UsuarioNombre"] = usuario.Nombre;
+                    TempData["UsuarioApellido"] = usuario.Apellido;
+                    TempData["IdUsuario"] = usuario.IdUsuario;
+
+                    // Redirigir a la acción de Dashboard
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
@@ -39,10 +46,11 @@ namespace AppTareas.Controllers.Login
             }
             else
             {
-                TempData["error"] = $"Usuario con el email {email} no encontrado";
+                TempData["error"] = "Usuario no encontrado";
                 return RedirectToAction("Index");
             }
         }
+
 
         [HttpGet]
         [Route("/Register")]
@@ -88,6 +96,7 @@ namespace AppTareas.Controllers.Login
 
         public IActionResult Index()
         {
+            ViewData["HideNavbar"] = true;
             return View();
         }
     }
