@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<LoginServicio>();
+builder.Services.AddScoped<TransactionServices>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

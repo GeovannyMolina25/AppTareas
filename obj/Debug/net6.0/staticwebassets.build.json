@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8fYIalDHH/NM8Fo3z8Q9q8Zw6D2F2Jwoal9izo8Kz/g=",
+  "Hash": "EOn/gQXFlMjCvObAlu3d+iCr8pEVc2yFhjbtAQu0dpQ=",
   "Source": "AppTareas",
   "BasePath": "_content/AppTareas",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\AppTareas.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\wwwroot\\assets\\images\\images.png",
+      "SourceId": "AppTareas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\wwwroot\\",
+      "BasePath": "_content/AppTareas",
+      "RelativePath": "assets/images/images.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\images.png"
     },
     {
       "Identity": "C:\\Aplicaciones distribuidas\\AppTareas\\AppTareas\\wwwroot\\css\\site.css",
