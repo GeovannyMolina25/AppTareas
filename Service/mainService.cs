@@ -11,8 +11,6 @@ namespace AppTareas.Service
         {
             _db = db;
         }
-        
-
         public List<Comentario> ObtenerComentario()
         {
             var datos = _db.Comentarios

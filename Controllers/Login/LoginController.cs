@@ -50,8 +50,6 @@ namespace AppTareas.Controllers.Login
                 return RedirectToAction("Index");
             }
         }
-
-
         [HttpGet]
         [Route("/Register")]
         public IActionResult Register()
