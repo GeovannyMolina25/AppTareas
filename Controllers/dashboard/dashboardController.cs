@@ -17,8 +17,6 @@ namespace AppTareas.Controllers.dashboard
         public IActionResult Index()
         {
             var datos = _service.ObtenerDatos();
-
-
             return View(datos);
         }
     }

@@ -33,7 +33,6 @@
                         <span class="navbar-text d-flex align-items-center">
                             @if (TempData["UsuarioNombre"] != null && TempData["UsuarioApellido"] != null)
                             {
-                                <!-- Usuario autenticado -->
                                 <a href="/Profile" class="nav-link text-dark d-flex align-items-center">
                                     <img src="/assets/images/images.png" alt="Profile Icon" class="img-fluid me-2" style="width: 24px; height: 24px;">
                                     @TempData["UsuarioNombre"] @TempData["UsuarioApellido"]
@@ -41,7 +40,6 @@
                             }
                             else
                             {
-                                <!-- Usuario no autenticado -->
                                 <a href="/Login" class="nav-link text-dark d-flex align-items-center">
                                     <img src="/assets/images/images.png" alt="Login Icon" class="img-fluid me-2" style="width: 24px; height: 24px;">
                                     login
