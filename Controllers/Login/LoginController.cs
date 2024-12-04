@@ -2,6 +2,7 @@
 using AppTareas.Service;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
@@ -13,6 +14,12 @@ namespace AppTareas.Controllers.Login
         private readonly ServiceContext _db;
         private readonly LoginServicio _encryp;
 
+        
+        public IActionResult Index()
+        {
+            ViewData["HideNavbar"] = true;
+            return View();
+        }
         public LoginController(ServiceContext db, LoginServicio encryp)
         {
             _db = db;
@@ -21,7 +28,7 @@ namespace AppTareas.Controllers.Login
 
         [HttpPost]
         [Route("/Login")]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
             var usuario = _db.Usuarios
                 .FirstOrDefault(e => e.Email == email);
@@ -30,10 +37,20 @@ namespace AppTareas.Controllers.Login
             {
                 if (_encryp.VerifyPassword(usuario.Contrasena, password))
                 {
-                    // Pasar datos del usuario a TempData
-                    TempData["UsuarioNombre"] = usuario.Nombre;
-                    TempData["UsuarioApellido"] = usuario.Apellido;
-                    TempData["IdUsuario"] = usuario.IdUsuario;
+                    // Crear claims para el usuario
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, usuario.Nombre),
+                        new Claim(ClaimTypes.Surname, usuario.Apellido),
+                        new Claim("IdUsuario", usuario.IdUsuario.ToString()) // Agregar un claim personalizado si lo necesitas
+                    };
+
+                    // Crear la identidad y el principal del usuario
+                    var userIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(userIdentity);
+
+                    // Iniciar sesión del usuario
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                     // Redirigir a la acción de Dashboard
                     return RedirectToAction("Index", "Dashboard");
@@ -50,6 +67,13 @@ namespace AppTareas.Controllers.Login
                 return RedirectToAction("Index");
             }
         }
+        public async Task<IActionResult> Logout()
+        {
+            // Cerrar sesión
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Login");
+        }
+
         [HttpGet]
         [Route("/Register")]
         public IActionResult Register()
@@ -91,11 +115,6 @@ namespace AppTareas.Controllers.Login
             TempData["error"] = "Error al ingresar datos de usuario";
             return View();
         }
-
-        public IActionResult Index()
-        {
-            ViewData["HideNavbar"] = true;
-            return View();
-        }
+        
     }
 }
