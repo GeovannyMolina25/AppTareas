@@ -1,5 +1,6 @@
 ﻿using AppTareas.Models;
 using AppTareas.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppTareas.Controllers.dashboard
@@ -14,6 +15,7 @@ namespace AppTareas.Controllers.dashboard
             _db = db;
             _service = service;
         }
+        [Authorize] 
         public IActionResult Index()
         {
             var datos = _service.ObtenerDatos();
