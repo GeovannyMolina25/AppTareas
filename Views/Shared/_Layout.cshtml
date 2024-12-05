@@ -25,12 +25,19 @@
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Información</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">¿Quienes somos?</a>
-                            </li>
+                            @if(User.Identity.IsAuthenticated){
+                                <a asp-area="" asp-controller="Service" asp-action="Index" class="nav-link text-black d-flex align-items-center">Mis servicios</a>
+
+                            }else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Información</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">¿Quienes somos?</a>
+                                </li>
+                            }
+                            
                         </ul>
                         <span class="navbar-text d-flex align-items-center">
                             @if (User.Identity.IsAuthenticated)
@@ -53,7 +60,7 @@
             </nav>
         </header>
     }
-    <div class="container">
+    <div class="container-fluid">
         <div class="container mt-3">
             @if (TempData["success"] != null)
             {

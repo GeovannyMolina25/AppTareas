@@ -1,42 +1,4 @@
-﻿@model List<AppTareas.Models.View_models.TransaccionViewModel>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Transacción</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+﻿@using System.Security.Claims
 <body>
-    <div class="container mt-4">
-        <h2>Registrar Nueva Transacción</h2>
-        <form method="post" action="/Transaccion/Registrar">
-            <div class="mb-3">
-                <label for="IdServicio" class="form-label">Servicio</label>
-                <select class="form-select" id="IdServicio" name="IdServicio" required>
-                    <option value="">Seleccione un servicio</option>
-                    @foreach (var servicio in Model)
-                    {
-                        <option value="@servicio.IdServicio">@servicio.NombreServicio</option>
-                    }
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="IdServicio" class="form-label">Servicio</label>
-                <select class="form-select" id="IdServicio" name="IdServicio" required>
-                    <option value="">Seleccione un servicio</option>
-                    @foreach (var usuario in Model)
-                    {
-                        <option value="@usuario.IdUsuarioCliente">@usuario.NombreUsuarioProveedor</option>
-                    }
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Registrar Transacción</button>
-        </form>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <h1 class="text-danger align-content-center"> Hola @User.Identity.Name</h1>
 </body>
-</html>
