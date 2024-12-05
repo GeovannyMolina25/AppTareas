@@ -37,22 +37,16 @@ namespace AppTareas.Controllers.Login
             {
                 if (_encryp.VerifyPassword(usuario.Contrasena, password))
                 {
-                    // Crear claims para el usuario
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, usuario.Nombre),
                         new Claim(ClaimTypes.Surname, usuario.Apellido),
-                        new Claim("IdUsuario", usuario.IdUsuario.ToString()) // Agregar un claim personalizado si lo necesitas
+                        new Claim("IdUsuario", usuario.IdUsuario.ToString()) 
                     };
 
-                    // Crear la identidad y el principal del usuario
                     var userIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(userIdentity);
-
-                    // Iniciar sesión del usuario
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    // Redirigir a la acción de Dashboard
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else

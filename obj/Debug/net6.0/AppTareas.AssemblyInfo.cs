@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppTareas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71c934899acf9a64a29dfad76fcca0516b98c832")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7f79377770d7d81e4a4f8067e6545b3f4a7b01d")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppTareas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppTareas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
