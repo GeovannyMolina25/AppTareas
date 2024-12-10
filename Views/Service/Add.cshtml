@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AppTareas.Models.View_models.TiposServiciosViewModel>
+
+@{
+    ViewData["Title"] = "Formulario Servicios";
+}
+
+<h2 class="text-center mb-4">Formulario de Servicios</h2>
+
+<div class="container d-flex justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Enviar" method="post">
+            <div class="form-group">
+                <label for="TipoServicio">Tipo servicio</label>
+                <select id="TipoServicio" name="IdTipoServicio" class="form-control">
+                    <option value="">Elija una opción</option>
+                    @foreach (var tipoServicio in Model)
+                    {
+                        <option value="@tipoServicio.IdTipoServicio">@tipoServicio.NombreTipo</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Titulo">Título del Servicio</label>
+                <input type="text" class="form-control" id="Titulo" name="Titulo" placeholder="Ingrese el título del servicio" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Descripcion">Descripción del Servicio</label>
+                <textarea class="form-control" id="Descripcion" name="Descripcion" rows="4" placeholder="Proporcione una descripción del servicio" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="Presupuesto">Presupuesto Estimado</label>
+                <input type="number" class="form-control" id="Presupuesto" name="Presupuesto" placeholder="Ingrese el presupuesto estimado" required />
+            </div>
+            <div class="form-group">
+                <label for="HorasEstimadas">Horas estimadas</label>
+                <input type="number" class="form-control" id="HorasEstimadas" name="HorasEstimadas" placeholder="Ingrese el presupuesto estimado" required />
+            </div>
+           
+            <div class="form-group text-center">
+                <button asp-action="Add" type="submit" class="btn btn-dark btn-lg">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
