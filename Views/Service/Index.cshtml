@@ -1,26 +1,38 @@
-﻿<section class="py-5 text-center bg-light">
+﻿@model List<AppTareas.Models.Servicio>
+
+<section class="py-5 text-center bg-light">
     <div class="container-fluid">
         ¿ Te gustaria agregar un servicio ?
     </div>
     <div class="container-fluid">
-        <button class="btn btn-dark text-white btn-lg">Haz clic aquí</button>
+        <button class="btn btn-dark text-white btn-lg"><a asp-action="Add" class="text-white">Haz clic aquí</a></button>
     </div>
 </section>
 
 <section class="py-5">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="p-3 bg-secondary text-white">Columna 1</div>
+        <div class="container-fluid">
+        
+            <div class="row">
+            @if(!Model.Any())
+            {
+                <div class="col-md-4">
+                    <div class="p-3 bg-secondary text-white">No existen datos</div>
+                </div>
+            }
+            else
+            {
+                @foreach (var servicios in Model)
+                {
+
+                        <div class="col-md-12">
+                            <div class="p-3 bg-secondary text-white">@servicios.Titulo</div>
+                        </div>
+                }
+            }
+            
             </div>
-            <div class="col-md-4">
-                <div class="p-3 bg-secondary text-white">Columna 2</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 bg-secondary text-white">Columna 3</div>
-            </div>
+        
         </div>
-    </div>
 </section>
 
 <section class="py-5 bg-light">
