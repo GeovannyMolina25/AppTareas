@@ -8,50 +8,70 @@
         <button class="btn btn-dark text-white btn-lg"><a asp-action="Add" class="text-white">Haz clic aquí</a></button>
     </div>
 </section>
-
 <section class="py-5">
-        <div class="container-fluid">
-        
-            <div class="row">
-            @if(!Model.Any())
+    <div class="container-fluid">
+        <!-- Horizontal scroll container -->
+        <div class="row flex-row flex-nowrap" style="overflow-x: auto; white-space: nowrap; gap: 10px;">
+            @if (!Model.Any())
             {
-                <div class="col-md-4">
-                    <div class="p-3 bg-secondary text-white">No existen datos</div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-secondary text-white text-center">No existen datos</div>
                 </div>
             }
             else
             {
-                @foreach (var servicios in Model)
+                @for (int i = 0; i < Model.Count(); i++)
                 {
-
-                        <div class="col-md-12">
-                            <div class="p-3 bg-secondary text-white">@servicios.Titulo</div>
+                    var servicio = Model[i];
+                    <div class="col-md-3" style="flex: 0 0 auto; padding: 10px;">
+                        <div class="card shadow-sm" style="height: 250px;">
+                            <div class="card-header bg-primary text-white text-center" style="font-weight: bold;">
+                                @servicio.Titulo
+                            </div>
+                            <div class="card-body d-flex flex-column justify-content-between text-center">
+                                <p class="card-text text-secondary" style="font-size: 14px;">
+                                    @servicio.Descripcion
+                                </p>
+                                <div class="d-flex justify-content-around">
+                                    <form asp-action="Details" method="post" style="width: 45%;">
+                                        <input type="hidden" name="id" value="@servicio.IdServicio" />
+                                        <button type="submit" class="btn btn-outline-primary btn-sm w-100">
+                                            Ver
+                                        </button>
+                                    </form>
+                                    <form asp-action="Delete" method="post" style="width: 45%;">
+                                        <input type="hidden" name="id" value="@servicio.IdServicio" />
+                                        <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                 }
             }
-            
-            </div>
-        
         </div>
+    </div>
 </section>
 
 <section class="py-5 bg-light">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 text-center">
-                <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Foto 1">
+                <img src="https://img.freepik.com/vector-premium/diseno-trabajo-equipo_24877-30703.jpg?semt=ais_hybrid" style="width: 100px; height: 100px; object-fit: cover;" class="img-fluid rounded" alt="Foto 1">
                 <h5 class="mt-3">Título 1</h5>
-                <p>Descripción de la foto 1.</p>
+                <p>¿Quienes somos?</p>
             </div>
             <div class="col-md-4 text-center">
-                <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Foto 2">
+                <img src="https://i.pinimg.com/736x/06/bc/e8/06bce81285badba0c3becd273ca67f95.jpg" style="width: 100px; height: 100px; object-fit: cover;" class="img-fluid rounded" alt="Foto 2">
                 <h5 class="mt-3">Título 2</h5>
-                <p>Descripción de la foto 2.</p>
+                <p>¿Como funciona?</p>
             </div>
             <div class="col-md-4 text-center">
-                <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="Foto 3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_V-_IN07fJfiqYsMITJ2qJKL3a4M0uZJ8bg&s" class="img-fluid rounded" style="width: 100px; height: 100px; object-fit: cover;" alt="Foto 3">
                 <h5 class="mt-3">Título 3</h5>
-                <p>Descripción de la foto 3.</p>
+                <p>¿Productos y servicios?</p>
             </div>
         </div>
     </div>
