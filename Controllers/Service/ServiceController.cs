@@ -10,8 +10,8 @@ namespace AppTareas.Controllers.Service
     public class ServiceController : Controller
     {
         private readonly ServiceContext _db;
-        private  readonly  ServiceService _service;
-        
+        private readonly ServiceService _service;
+
         public ServiceController(ServiceContext db)
         {
             _db = db;
@@ -37,7 +37,7 @@ namespace AppTareas.Controllers.Service
                     NombreTipo = e.NombreTipo,
                 })
                 .ToList();
-             ViewBag.TiposServicios = TipoServicios;
+            ViewBag.TiposServicios = TipoServicios;
 
             return View(TipoServicios);
         }
@@ -48,22 +48,22 @@ namespace AppTareas.Controllers.Service
             {
                 var usuario = User.Claims.FirstOrDefault(e => e.Type == "IdUsuario")?.Value;
                 var idUsuario = int.Parse(usuario);
-                    var servicio = new Servicio
-                    {
-                        IdUsuario = idUsuario,
-                        IdTipoServicio = modelServicio.IdTipoServicio,
-                        Titulo = modelServicio.Titulo,
-                        Descripcion = modelServicio.Descripcion,
-                        Presupuesto = modelServicio.Presupuesto,
-                        HorasEstimadas = modelServicio.HorasEstimadas,
-                        FechaPublicacion = DateTime.Now,
-                        Estado = "Publicado"
-                    };
-                    _db.Add(servicio);
-                    _db.SaveChanges();
-                    TempData["success"] = $"El servicio {modelServicio.Titulo} ha sido ingresado correctamente";
-                    return RedirectToAction("Index");
-                
+                var servicio = new Servicio
+                {
+                    IdUsuario = idUsuario,
+                    IdTipoServicio = modelServicio.IdTipoServicio,
+                    Titulo = modelServicio.Titulo,
+                    Descripcion = modelServicio.Descripcion,
+                    Presupuesto = modelServicio.Presupuesto,
+                    HorasEstimadas = modelServicio.HorasEstimadas,
+                    FechaPublicacion = DateTime.Now,
+                    Estado = "Publicado"
+                };
+                _db.Add(servicio);
+                _db.SaveChanges();
+                TempData["success"] = $"El servicio {modelServicio.Titulo} ha sido ingresado correctamente";
+                return RedirectToAction("Index");
+
             }
             catch (Exception ex)
             {
@@ -72,6 +72,19 @@ namespace AppTareas.Controllers.Service
                 TempData["error"] = ex.Message;
                 return RedirectToAction("Add");
             }
+        }
+        [HttpPost]
+        public IActionResult details(int id)
+        {
+            var datos = _db.TiposServicios.FirstOrDefault(e => e.IdTipoServicio == id);
+
+
+            return View(datos);
+        }
+        public IActionResult delete(int id)
+        {
+            var datos = _db.TiposServicios.FirstOrDefault(e => e.IdTipoServicio == id);
+            return View(datos);
         }
     }
 }

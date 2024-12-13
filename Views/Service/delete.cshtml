@@ -2,17 +2,16 @@
 <div class="container d-flex justify-content-center">
     <div class="col-md-6">
         <div class="card shadow-lg p-4">
-            <h4 class="text-center mb-4 text-info">Complete los siguientes campos</h4>
+            <h4 class="text-center mb-4 text-info">Eliminar servicio</h4>
             <form asp-action="Enviar" method="post">
                 <!-- Tipo de servicio -->
                 <div class="form-group mb-4">
                     <label for="TipoServicio" class="text-dark font-weight-bold">Tipo de servicio</label>
                     <select id="TipoServicio" name="IdTipoServicio" class="form-control border-secondary rounded-pill">
                         <option value="">Elija una opción</option>
-                        @foreach (var tipoServicio in Model)
-                        {
-                            <option value="@tipoServicio.IdTipoServicio">@tipoServicio.NombreTipo</option>
-                        }
+                        
+                            <option value=""></option>
+                        
                     </select>
                 </div>
                 <div class="form-group mb-4">
@@ -32,7 +31,7 @@
                     <input type="number" class="form-control border-secondary rounded-pill" id="HorasEstimadas" name="HorasEstimadas" placeholder="Ingrese las horas estimadas" required />
                 </div>
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Enviar</button>
+                    <button type="submit" class="btn btn-danger btn-lg px-4 py-2 rounded-pill">Eliminar</button>
                 </div>
             </form>
         </div>

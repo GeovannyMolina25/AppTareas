@@ -1,0 +1,46 @@
+﻿@model AppTareas.Models.TiposServicio  
+
+<h2 class="text-center mb-5 text-primary">Formulario de Servicios</h2>
+
+<div class="container d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4">
+            <h4 class="text-center mb-4 text-info">Complete los siguientes campos</h4>
+            <form asp-action="Enviar" method="post">
+                
+                <!-- Título del servicio -->
+                <div class="form-group mb-4">
+                    <label for="Titulo" class="text-dark font-weight-bold">Título del Servicio</label>
+                    <!-- Usamos 'asp-for' para enlazar el valor de 'Titulo' con el campo -->
+                    <input type="text" class="form-control border-secondary rounded-pill" id="Titulo" name="Titulo" asp-for="Modalidad" placeholder="Ingrese el título del servicio" required />
+                </div>
+
+                <!-- Descripción del servicio -->
+                <div class="form-group mb-4">
+                    <label for="Descripcion" class="text-dark font-weight-bold">Descripción del Servicio</label>
+                    <!-- Usamos 'asp-for' para enlazar el valor de 'Descripcion' con el campo -->
+                    <textarea class="form-control border-secondary rounded" id="Descripcion" name="Descripcion" asp-for="Descripcion" rows="4" placeholder="Proporcione una descripción del servicio" required></textarea>
+                </div>
+
+                <!-- Presupuesto estimado -->
+                <div class="form-group mb-4">
+                    <label for="Presupuesto" class="text-dark font-weight-bold">Presupuesto Estimado</label>
+                    <!-- Usamos 'asp-for' para enlazar el valor de 'Presupuesto' con el campo -->
+                    <input type="number" class="form-control border-secondary rounded-pill" id="Presupuesto" name="Presupuesto" asp-for="Modalidad" placeholder="Ingrese el presupuesto estimado" required />
+                </div>
+
+                <!-- Horas estimadas -->
+                <div class="form-group mb-4">
+                    <label for="HorasEstimadas" class="text-dark font-weight-bold">Horas estimadas</label>
+                    <!-- Usamos 'asp-for' para enlazar el valor de 'HorasEstimadas' con el campo -->
+                    <input type="number" class="form-control border-secondary rounded-pill" id="HorasEstimadas" name="HorasEstimadas" asp-for="Modalidad" placeholder="Ingrese las horas estimadas" required />
+                </div>
+
+                <!-- Botón de envío -->
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
