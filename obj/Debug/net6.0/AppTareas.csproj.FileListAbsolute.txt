@@ -64,3 +64,8 @@ C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.pdb
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.genruntimeconfig.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\ref\AppTareas.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.sourcelink.json
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.MvcApplicationPartsAssemblyInfo.cs
