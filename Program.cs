@@ -24,7 +24,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LogoutPath = "/Logout";
         options.AccessDeniedPath = "/AccessDenied";
         options.SlidingExpiration = true;
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 
 // Add Swagger services
