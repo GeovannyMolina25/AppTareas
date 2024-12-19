@@ -2,6 +2,7 @@
 using AppTareas.Models.View_models;
 using AppTareas.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Security.Claims;
 
@@ -62,7 +63,7 @@ namespace AppTareas.Controllers.Service
                 _db.Add(servicio);
                 _db.SaveChanges();
                 TempData["success"] = $"El servicio {modelServicio.Titulo} ha sido ingresado correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
 
             }
             catch (Exception ex)
@@ -76,12 +77,55 @@ namespace AppTareas.Controllers.Service
         [HttpPost]
         public IActionResult details(int id)
         {
-            var datos = _db.TiposServicios.FirstOrDefault(e => e.IdTipoServicio == id);
+            var TipoServicios = _db.TiposServicios
+            .Select(e => new TiposServicio
+            {
+                NombreTipo = e.NombreTipo,
+                IdTipoServicio = e.IdTipoServicio,
+            })
+            .ToList();
 
+            ViewData["ViewNombres"] = TipoServicios;
 
-            return View(datos);
+            // Pasa un único objeto como modelo.
+            var servicio = _db.Servicios
+                .FirstOrDefault(e => e.IdServicio == id);
+
+            return View(servicio);
+
         }
-        public IActionResult delete(int id)
+        [HttpGet]
+        
+        public IActionResult details(Servicio model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var servicios = _db.Servicios.FirstOrDefault(e => e.IdServicio == model.IdServicio);
+
+                    if (servicios != null)
+                    {
+                        servicios.IdTipoServicio = model.IdTipoServicio;
+                        servicios.Titulo = model.Titulo;
+                        servicios.Descripcion = model.Descripcion;
+                        servicios.Presupuesto = model.Presupuesto;
+                        servicios.HorasEstimadas = model.HorasEstimadas;
+                        _db.SaveChanges();
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                TempData["error"] = "No se puede modificar el servicio";
+                return View(model);
+            }catch (Exception ex)
+            {
+                TempData["error"] = ex.ToString();
+                return View(model);
+            }
+            
+        }
+
+            public IActionResult delete(int id)
         {
             var datos = _db.TiposServicios.FirstOrDefault(e => e.IdTipoServicio == id);
             return View(datos);
