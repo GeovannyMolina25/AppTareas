@@ -12,12 +12,11 @@ namespace AppTareas.Controllers.Service
     {
         private readonly ServiceContext _db;
         private readonly ServiceService _service;
-
+        // Conexion de la base de datos
         public ServiceController(ServiceContext db)
         {
             _db = db;
         }
-
         public IActionResult Index()
         {
             var usuario = User.Claims.FirstOrDefault(e => e.Type == "IdUsuario")?.Value;

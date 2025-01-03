@@ -15,8 +15,7 @@ namespace AppTareas.Controllers.API
         {
             _db = db;
         }
-        
-
+        // Api para los usuarios
         [HttpGet("Usuarios")]
         public ActionResult<List<Usuario>> ObtenerUsuarios()
         {
@@ -26,12 +25,10 @@ namespace AppTareas.Controllers.API
                     nombre = e.Nombre,
                     apellido = e.Apellido,
                 }).ToList();
-
             return Ok(datos);
         }
-
+        // Api para los servicion 
         [HttpGet("Servicios")]
-
         public ActionResult<List<Servicio>> Obeterservicios()
         {
             var servicios = _db.Servicios
@@ -44,7 +41,6 @@ namespace AppTareas.Controllers.API
             return Ok(servicios);
 
         }
-
         [HttpGet("Comentarios")]
 
         public ActionResult<List<Usuario>> ObtenerComentario()
@@ -60,7 +56,6 @@ namespace AppTareas.Controllers.API
                 .ToList();
             return Ok(comentario);
         }
-
         [HttpGet("Transacciones")]
 
         public ActionResult transanccionesUsaurio()
@@ -77,9 +72,7 @@ namespace AppTareas.Controllers.API
  
             return Ok(transacciones);
         }
-
         [HttpGet("Presupuesto")]
-
         public ActionResult ObtenerPresupuestoAlto()
         {
             var presupuesto = _db.Servicios
@@ -90,7 +83,6 @@ namespace AppTareas.Controllers.API
                     presupuesto = e.Presupuesto
                 })
                 .FirstOrDefault();
-
             return Ok(presupuesto);
         }
 
@@ -106,8 +98,6 @@ namespace AppTareas.Controllers.API
                     Nombre = e.Select(p => p.IdServicioNavigation.Titulo),
                     Monto = e.Max(p => p.Monto)
                 }).ToList();
-                
-
             return Ok(pujas);
         }
 
