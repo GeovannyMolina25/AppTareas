@@ -15,6 +15,7 @@ namespace AppTareas.Controllers.dashboard
             _db = db;
             _service = service;
         }
+        // Autoriazacion de para las vistas 
         [Authorize] 
         public IActionResult Index()
         {

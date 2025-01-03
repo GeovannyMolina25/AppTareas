@@ -74,7 +74,7 @@ namespace AppTareas.Controllers.Login
         {
             return View();
         }
-
+        // Comprobacion de los usuarios
         [HttpPost]
         [Route("/Register")]
         public IActionResult Register(Usuario usuario)
@@ -85,12 +85,10 @@ namespace AppTareas.Controllers.Login
                 {
                     bool Valemail = _db.Usuarios
                         .Any(e => e.Email == usuario.Email);
-
                     if (Valemail)
                     {
                         throw new Exception($"El usuario {usuario.Email} ya tiene cuenta");
                     }
-
                     var passwordEncrip = _encryp.EncryptPassword(usuario.Contrasena);
                     usuario.Contrasena = passwordEncrip;
 
@@ -105,7 +103,6 @@ namespace AppTareas.Controllers.Login
                     TempData["error"] = ex.Message;
                 }
             }
-
             TempData["error"] = "Error al ingresar datos de usuario";
             return View();
         }
