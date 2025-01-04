@@ -81,15 +81,11 @@ namespace AppTareas.Controllers.Service
                 IdTipoServicio = e.IdTipoServicio,
             })
             .ToList();
-
             ViewData["ViewNombres"] = TipoServicios;
-
             // Pasa un único objeto como modelo.
             var servicio = _db.Servicios
                 .FirstOrDefault(e => e.IdServicio == id);
-
             return View(servicio);
-
         }
         [HttpGet]
         
@@ -124,9 +120,7 @@ namespace AppTareas.Controllers.Service
                 TempData["error"] = ex.ToString();
                 return View(servicio);
             }
-            
         }
-
             public IActionResult delete(int id)
         {
             var datos = _db.TiposServicios.FirstOrDefault(e => e.IdTipoServicio == id);
