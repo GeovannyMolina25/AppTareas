@@ -67,8 +67,6 @@ namespace AppTareas.Controllers.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.InnerException?.Message);
-                throw;
                 TempData["error"] = ex.Message;
                 return RedirectToAction("Add");
             }
@@ -111,15 +109,20 @@ namespace AppTareas.Controllers.Service
                         servicios.Presupuesto = model.Presupuesto;
                         servicios.HorasEstimadas = model.HorasEstimadas;
                         _db.SaveChanges();
+                        TempData["success"] = "El elemento ha sido modificado exitosamente";
                         return RedirectToAction(nameof(Index));
                     }
                 }
                 TempData["error"] = "No se puede modificar el servicio";
-                return View(model);
+                var servicio = _db.Servicios
+                .FirstOrDefault(e => e.IdServicio == model.IdServicio);
+                return View(servicio);
             }catch (Exception ex)
             {
+                var servicio = _db.Servicios
+                .FirstOrDefault(e => e.IdServicio == model.IdServicio);
                 TempData["error"] = ex.ToString();
-                return View(model);
+                return View(servicio);
             }
             
         }
