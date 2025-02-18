@@ -19,7 +19,11 @@ C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.Iden
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
@@ -44,9 +48,11 @@ C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.Gene
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.AssemblyInfoInputs.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.AssemblyInfo.cs
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.csproj.CoreCompileInputs.cache
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.MvcApplicationPartsAssemblyInfo.cs
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.MvcApplicationPartsAssemblyInfo.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.RazorAssemblyInfo.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.RazorAssemblyInfo.cs
+C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.sourcelink.json
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\staticwebassets.build.json
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\staticwebassets.development.json
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\staticwebassets\msbuild.AppTareas.Microsoft.AspNetCore.StaticWebAssets.props
@@ -63,9 +69,3 @@ C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\refint\AppTare
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.pdb
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.genruntimeconfig.cache
 C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\ref\AppTareas.dll
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.sourcelink.json
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Aplicaciones distribuidas\AppTareas\AppTareas\obj\Debug\net6.0\AppTareas.MvcApplicationPartsAssemblyInfo.cs
