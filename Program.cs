@@ -5,18 +5,32 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register application services
+// Registrar servicios de la aplicación
 builder.Services.AddScoped<LoginServicio>();
 builder.Services.AddScoped<TransactionServices>();
 
-// Add services to the container
+// Añadir servicios al contenedor
 builder.Services.AddControllersWithViews();
 
-// Configure the database context
+// Configurar el contexto de la base de datos
 builder.Services.AddDbContext<ServiceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ServiceConnection")));
 
-// Configure cookie authentication
+// Obtener los orígenes permitidos desde la configuración
+var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
+
+// Configurar CORS
+builder.Services.AddCors(opciones =>
+{
+    opciones.AddDefaultPolicy(politica =>
+    {
+        politica.WithOrigins(origenesPermitidos) // Permitir los orígenes especificados
+                .AllowAnyHeader()               // Permitir cualquier encabezado
+                .AllowAnyMethod();              // Permitir cualquier método (GET, POST, etc.)
+    });
+});
+
+// Configurar autenticación por cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -27,13 +41,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 
-// Add Swagger services
+// Añadir servicios de Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Configurar el pipeline de solicitudes HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -41,12 +55,12 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    // Enable Swagger middleware in development
+    // Habilitar Swagger en desarrollo
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppTareas API v1");
-        c.RoutePrefix = "api-docs"; // Swagger UI will be available at /api-docs
+        c.RoutePrefix = "api-docs"; // La interfaz de Swagger estará disponible en /api-docs
     });
 }
 
@@ -55,7 +69,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Add the authentication and authorization middleware
+// Usar la política de CORS
+app.UseCors(); // Asegúrate de que esto esté antes de UseAuthentication y UseAuthorization
+
+// Añadir middleware de autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
