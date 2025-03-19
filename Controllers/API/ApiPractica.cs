@@ -136,5 +136,18 @@ namespace AppTareas.Controllers.API
             return Ok(serPuja);
         }
 
+        [HttpGet("TipoServicio")]
+        public ActionResult obtenerUsuario()
+        {
+            var usuarios = from u in _db.Usuarios
+                           join s in _db.Servicios on u.IdUsuario equals s.IdUsuario
+                           join ts in _db.TiposServicios on s.IdTipoServicio equals ts.IdTipoServicio
+                           select new
+                           {
+                               u.Nombre,
+                               ts.Descripcion
+                           };
+            return Ok(usuarios);
+        }
     }  
 }
